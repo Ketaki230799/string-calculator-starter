@@ -1,5 +1,8 @@
 package calculator;
-
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -34,6 +37,19 @@ class StringCalculatorShould {
     public void threeNumbersDelimitedAnywayShouldBeSummed() {
         assertEquals(6,stringCalculator.add("1,2,3"));
         assertEquals(10,stringCalculator.add("5\n2\n3"));
+    }
+     @Test
+    public void negativeInputReturnsException() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Negative input!");
+        stringCalculator.add("-1");
+       stringCalculator.add("-5,10\n-15");
+    }
+
+    @Test
+    public void numbersGreaterThan1000AreIgnored() {
+        assertEquals(17,stringCalculator.add("5,12,1001"));
+        assertEquals(26,stringCalculator.add("14124,22\n4,1214"));
     }
 
 }
