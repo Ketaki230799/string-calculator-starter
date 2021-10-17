@@ -15,5 +15,15 @@ class StringCalculator {
         }
         return sum;
     }
+    
+     private int stringToInt(String number) {
+        int num = Integer.parseInt(number);
+        if (num < 0) {
+            throw new IllegalArgumentException("Negative input!");
+        } else {
+            return num;
+        }
+    }
+
 
 }
