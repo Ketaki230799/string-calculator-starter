@@ -18,5 +18,10 @@ class StringCalculatorShould {
         assertEquals(1, stringCalculator.add("1"));
          assertEquals(5,stringCalculator.add("5"));
     }
+    @Test
+    public void numbersCommaDelimitedShouldBeSummed() {
+        assertEquals(3,stringCalculator.add("1,2"));
+        assertEquals(25, stringCalculator.add("10,15"));
+    }
 
 }
